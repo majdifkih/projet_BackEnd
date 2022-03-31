@@ -1,0 +1,23 @@
+{
+  "name": "projet_backend",
+  "version": "1.0.0",
+  "description": "fleet tracking backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "majdi",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "body-parser": "^1.19.2",
+    "cors": "^2.8.5",
+    "cros": "^1.0.1",
+    "express": "^4.17.3",
+    "fs": "^0.0.1-security",
+    "mongoose": "^6.2.9",
+    "nodemon": "^2.0.15",
+    "react": "^18.0.0",
+    "usestate": "^1.1.3"
+  }
+}
