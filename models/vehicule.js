@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const vehicleschema = new mongoose.Schema({
 
     Matricule:{
-        type:Number,
+        type:String,
         required:true,
         unique:true
     },

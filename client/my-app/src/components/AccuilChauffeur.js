@@ -36,16 +36,8 @@ const generatePDF = chauffeur => {
      
         super(props);
     
-        {
-          const { cin,nom,prenom,address,age} = this.state;
-          const chauffeur = {
-            cin:cin,
-            nom:nom,
-            prenom:prenom,
-            address: address,
-            age:age
-            
-      }
+        this.state={
+          chauffeur:[]
         }
       }
       componentDidMount(){
@@ -92,9 +84,9 @@ const generatePDF = chauffeur => {
           }
           render() {
             return (
-<div id="wrapper" className="toggled">
-      <div id="page-content-wrapper">
-      <div className="container-fluid">
+                 <div id="wrapper" className="toggled">
+                 <div id="page-content-wrapper">
+                  <div className="container-fluid">
 
         
           
@@ -159,7 +151,7 @@ const generatePDF = chauffeur => {
               </tr>
             </thead>
             <tbody>
-                {chauffeur.map((chauffeur,index)=>(
+                {this.state.chauffeur.map((chauffeur,index)=>(
                   <tr key={index}>
                     <th scope="row">{index+1}</th>
                     <td>{chauffeur.cin}</td>
@@ -177,7 +169,7 @@ const generatePDF = chauffeur => {
                     </td>
                    
                     <td>
-                      <a className="btn btn-danger" href="/accuielChauffeur" onClick={()=>this.onDelete(chauffeur._id)}><i className="fas fa-trash-alt"></i>supprimer</a>
+                      <a className="btn btn-danger" href="/accuielChauffeur" onClick={()=>this.onDelete(chauffeur._id)}><i className="fas fa-trash-alt"></i>supprimer</a><p>frgeggg</p>
                     </td>
 
                   </tr>

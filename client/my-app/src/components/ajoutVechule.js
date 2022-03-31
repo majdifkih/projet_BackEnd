@@ -45,24 +45,24 @@ export default class AjoutVehicle extends Component {
         let DatamaintenanceError="";
 
         if(!this.state.Matricule){
-            MatriculeError= '*Register Number is Required!'
+            MatriculeError= '*matricule Number is Required!'
         }
-        else if (!this.state.Matricule.includes('-')){
-            MatriculeError= '*Please enter valid Register Number!'
-        }
+       // else if (!this.state.Matricule.includes('')){
+         //   MatriculeError= '*Please enter valid Register Number!'
+        //}
 
         if(!this.state.Kilométrage){
-            KilométrageError="*Engine Number is Required! "
+            KilométrageError="*kilometrage is Required! "
         }
         if(!this.state.Consommationcarburant){
-            ConsommationcarburantError="*Brand Name is Required!"
+            ConsommationcarburantError="*consommation is Required!"
         }
         if(!this.state.Categorie){
-            CategorieError="*Brand Name is Required!"
+            CategorieError="*categorie is Required!"
         }
 
         if(!this.state.Datamaintenance){
-            DatamaintenanceError="*Manufacture year   is Required!"
+            DatamaintenanceError="*date year   is Required!"
         }
        
 
@@ -134,7 +134,7 @@ export default class AjoutVehicle extends Component {
     
         this.setState(
             {
-                Matricule:"1022",
+                Matricule:"-1022",
             Kilométrage:"10",
             Consommationcarburant:"1000",
             Categorie:"camion",
@@ -164,7 +164,7 @@ export default class AjoutVehicle extends Component {
         <a class="nav-link" href="/TMSDash">Tableau de bord</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/vehicleDash"> &#62; Détails Véhicle </a>
+        <a class="nav-link" href="/accuielVehcule"> &#62; Détails Véhicle </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/accuielVehcule"> &#62; ajout Véhicle <span class="sr-only">(courant)</span> </a>
@@ -178,7 +178,7 @@ export default class AjoutVehicle extends Component {
             <div className= 'col-md-8 mt-8-4 mx-auto'>
               <h1 className="h3 mb-3 font-weight-normal">Ajouter un nouveau Véhicle</h1>
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                     <button className="btn btn-warning " ><a href="/vehicleDash" style= {{textDecoration:'none', color:'black'}}><i className="fas fa-list"></i>voir liste Véhicle </a></button>
+                     <button className="btn btn-warning " ><a href="/accuielVehcule" style= {{textDecoration:'none', color:'black'}}><i className="fas fa-list"></i>voir liste Véhicle </a></button>
                     </div>         
                <form className="form-group" style={{marginBottom:'15px'}}> 
                 <div>

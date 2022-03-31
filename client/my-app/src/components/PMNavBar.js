@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./styleSideNav.css";
-
+import {Link} from 'react-router-dom';
 class PMNavBar extends Component {
   render() {
     return (
@@ -20,16 +20,16 @@ class PMNavBar extends Component {
             <br />
             <br />
             <li>
-              <a href="/">
+            <Link to="/" >
                 <i class="fas fa-sort-amount-up-alt"></i>
                 &nbsp; Order Mangment
-              </a>
+                </Link>
             </li>
             <li>
-              <a href="/">
+            <Link to="/" >
                 <i class="fab fa-product-hunt"></i>
                 &nbsp; Material Stock
-              </a>
+                </Link>
             </li>
             <li>
               <div className="dropdown">
@@ -38,50 +38,51 @@ class PMNavBar extends Component {
                   &nbsp; Production
                 </button>
                 <div className="dropdown-content">
-                  <a href="/PMDashboard">Production Dashboard</a>
-                  <a href="/clientneworder">Client New Orders</a>
-                  <a href="/searchfac">Search Factory</a>
-                  <a href="/magictool">Magic Tool</a>
-                  <a href="/rawfacHome">Raw Factory Dashboard</a>
-                  <a href="/pmHome">Register Factory Dashboard</a>
+                <Link to="/PMDashboard" >Production Dashboard</Link>
+                <Link to="/clientneworder" >Client New Orders</Link>
+                <Link to="/searchfac" >Search Factory</Link>
+                <Link to="/magictool" >Magic Tool</Link>
+                <Link to="/rawfacHome" >Raw Factory Dashboard</Link>
+                <Link to="/pmHome" >Register Factory Dashboard</Link>
                 </div>
               </div>
             </li>
             <li>
-              <a href="/">
+            <Link to="/" >
                 <i class="fas fa-file-import"></i>
                 &nbsp; Import Management
-              </a>
+                </Link>
             </li>
             <li>
-              <a href="/">
+            <Link to="/" >
                 <i class="fas fa-tasks"></i>
                 &nbsp; Quality Check
-              </a>
+                </Link>
             </li>
             <li>
-              <a href="/">
+              <Link to="/" >
                 <i class="fas fa-file-invoice-dollar"></i>
                 &nbsp; Accounts and Profits
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/TMSDash">
+            
+              <Link to="/TMSDash" >
                 <i class="fas fa-truck"></i>
                 &nbsp; Transport
-              </a>
+                </Link>
             </li>
             <li>
-              <a href="/">
+            <Link to="/" >
                 <i class="fas fa-users-cog"></i>
                 &nbsp; Admin
-              </a>
+                </Link>
             </li>
             <li>
-              <a href="/">
+            <Link to="/" >
                 <i class="fas fa-file-invoice"></i>
                 &nbsp; Reports
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -104,21 +105,21 @@ class PMNavBar extends Component {
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="/">
+                <Link to="/" className="nav-link active" aria-current="page" >
                     Accuiel
-                  </a>
+                    </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="/#">
+                <Link to="/" className="nav-link">
                     <i class="fas fa-question-circle"></i>
                     &nbsp; aide
-                  </a>
+                    </Link>
                 </li>
 
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="/#">
+                <Link to="/" className="nav-link active" aria-current="page" >
                     <i class="fas fa-phone-square"></i> &nbsp;Contact
-                  </a>
+                    </Link>
                 </li>
 
                 <div class="position-absolute top-50 end-0 translate-middle-y">

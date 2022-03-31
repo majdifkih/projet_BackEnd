@@ -110,10 +110,12 @@ export default class EditVehicle extends Component {
         axios.get(`http://localhost:5000/vehicle/vehicleDash/${id}`).then((res)=>{
             if(res.data.success){
                 this.setState({
-                    regno:res.data.vehicle.regno,
-                    engno:res.data.vehicle.engno,
-                    brandname:res.data.vehicle.brandname,
-                    manuyear:res.data.vehicle.manuyear
+                    Matricule:res.data.vehicle.Matricule,
+                    Kilométrage:res.data.vehicle.Kilométrage,
+                    Consommationcarburant:res.data.vehicle.Consommationcarburant,
+                    Categorie:res.data.vehicle.Categorie,
+                    Datamaintenance:res.data.vehicle.Datamaintenance,
+
                 
                     
                 });
@@ -126,15 +128,15 @@ export default class EditVehicle extends Component {
             <div>
                 <hr/>
 
-                <div id="wrapper" className="toggled">
-      <div id="page-content-wrapper">
-      <div className="container-fluid">
+                     <div id="wrapper" className="toggled">
+                     <div id="page-content-wrapper">
+                     <div className="container-fluid">
 
 
                 <div className= 'col-md-8 mt-8-4 mx-auto'>
               <h1 className="h3 mb-3 font-weight-normal">mise a jour VEHICLE</h1>
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                     <button className="btn btn-warning " ><a href="/vehicleDash" style= {{textDecoration:'none', color:'black'}}><i className="fas fa-list"></i>voir Liste chaffeur</a></button>
+                     <button className="btn btn-warning " ><Link to="/vehicleDash"  style= {{textDecoration:'none', color:'black'}}><i className="fas fa-list"></i>voir Liste chaffeur</Link></button>
                     </div>          
                <form className="form-group" style={{marginBottom:'15px'}}> 
                 <div>
@@ -173,12 +175,7 @@ export default class EditVehicle extends Component {
                     <div className="text-danger" style={{fontSize:12 ,color:"red"}}>
                            {this.state.CategorieError}
                    </div>
-                    <lable style={{marginBottom:'15px'}}>Year of Manufacture</lable>
-                   <input type="date" placeholder='Enter Date' className='form-control'            
-                     name="manuyear" value={this.state.manuyear} onChange={this.handleInputChange} max={moment().format("YYYY-MM-DD")} /> <br/>
-                       <div style={{fontSize:12 ,color:"red"}}>
-                           {this.state.manuyearError}
-                   </div>
+                    
                    <lable style={{marginBottom:'15px'}}>Date maintenance</lable>
                     <input type="date" placeholder='Enter Date' className='form-control'            
                      name="Datamaintenance" value={this.state.Datamaintenance} onChange={this.handleInputChange} max={moment().format("YYYY-MM-DD")} required/> 

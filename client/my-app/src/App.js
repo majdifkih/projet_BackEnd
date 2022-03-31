@@ -8,6 +8,7 @@ import NavBar from "./components/NavBar";
 import AjoutVehicle from "./components/ajoutVechule"; 
 import PMNavBar from "./components/PMNavBar"; 
 import { Routes, Route } from "react-router-dom"; 
+import AccuielVehicle from './components/AccuilVehicule';
 
 export default class App extends Component {
   render() {
@@ -24,6 +25,7 @@ export default class App extends Component {
           <Route path="/maj/:id" element={<EditChauffeur />}/>
           
           <Route path="/ajout_vehicule" element={<AjoutVehicle />}/>
+          <Route path="/accuielVehcule" element={<AccuielVehicle />}/>
           <Route path="/TMSDash" element={<TMSDash />}/>
         </Routes>
 
