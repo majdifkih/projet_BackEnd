@@ -1,82 +1,83 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import './AccuilChauffeur.css';
+import './AccuilProduit.css';
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 
-const generatePDF = chauffeur => {
+const generatePDF = produit => {
     const doc = new jsPDF();
-    const tableColumn = ["cin", "nom","prenom", "Address", "age"];
+    const tableColumn = ["referenceproduit", "nomproduit","quantiteproduit", "prixproduit", "categorie"];
     const tableRows = [];
   
-    chauffeur.map(chauffeur => {
-      const chauffeurdata = [
-        chauffeur.cin,
-        chauffeur.nom,
-        chauffeur.prenom,
-        chauffeur.address,
-        chauffeur.age,
+    produit.map(produit => {
+      const produitdata = [
+        produit.referenceproduit,
+        produit.nomproduit,
+        produit.quantiteproduit,
+        produit.prixproduit,
+        produit.categorie,
         
    ];
-      tableRows.push(chauffeurdata);
+      tableRows.push(produitdata);
     })
     doc.text("FLEET TRACKING", 70,8).setFontSize(13);
-    doc.text("Rapport Chauffeur  ", 14, 16).setFontSize(13); 
+    doc.text("Rapport produit  ", 14, 16).setFontSize(13); 
     doc.autoTable(tableColumn, tableRows, { styles: { fontSize: 8, }, startY: 35 });
-    doc.save("Chauffeur détails.pdf");
+    doc.save("produit détails.pdf");
   }
 
 
 
 
-  export default class AccuielChauffeur extends Component {
+  export default class Accuielproduit extends Component {
  
     constructor(props){
      
         super(props);
     
         this.state={
-          chauffeur:[]
+            produit:[]
         }
       }
       componentDidMount(){
-        this.getchauffeur();
+        this.getproduit();
       }
      
-      getchauffeur(){
-          axios.get("http://localhost:5000/accuielChauffeur").then(res=>{
+      getproduit(){
+          axios.get("http://localhost:5000/accuielProduit").then(res=>{
             if(res.data.success){
               this.setState({
-                chauffeur:res.data.existingPosts
+                produit:res.data.existingPosts
               });
-              console.log(this.state.chauffeur)
+              console.log(this.state.produit)
             }
           })
         }
         onDelete=(id)=>{
-            axios.delete(`/deleteChauffeur/${id}`).then((res)=>{
+            axios.delete(`/deleteProduit/${id}`).then((res)=>{
               Swal.fire("supprimer","supprime avec succes","warning")
-              this.getchauffeur();
+              this.getproduit();
             })
           }
 
-          filterData(chauffeur,searchresult){
-            const result = chauffeur.filter((chauffeur)=>
-            chauffeur.cin.toLowerCase().includes(searchresult)||
-            chauffeur.nom.toLowerCase().includes(searchresult)||
-            chauffeur.prenom.toLowerCase().includes(searchresult)||
-            chauffeur.address.toLowerCase().includes(searchresult)||
-            chauffeur.age.toLowerCase().includes(searchresult)
-          
+          filterData(produit,searchresult){
+            const result = produit.filter((produit)=>
+            produit.referenceproduit.toLowerCase().includes(searchresult)||
+            produit.nomproduit.toLowerCase().includes(searchresult)||
+            produit.quantiteproduit.toLowerCase().includes(searchresult)||
+            produit.prixproduit.toLowerCase().includes(searchresult)||
+            produit.categorie.toLowerCase().includes(searchresult)
+            
+            
             )
           
-            this.setState({chauffeur:result})
+            this.setState({produit:result})
           
           }
           handlesearch=(e)=>{
             const searchresult = e.currentTarget.value
-            axios.get("http://localhost:5000/accuielChauffeur").then(res=>{
+            axios.get("http://localhost:5000/accuielProduit").then(res=>{
               if(res.data.success){
               this.filterData(res.data.existingPosts,searchresult)
                  }
@@ -97,10 +98,10 @@ const generatePDF = chauffeur => {
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="/TMSDash">Tableau de bord</a>
+        <a class="nav-link" href="/">Accuiel</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/accuielChauffeur"> &#62; Chauffeur détails <span class="sr-only">(courant)</span> </a>
+        <a class="nav-link" href="/accuielProduit"> &#62; produit détails <span class="sr-only">(courant)</span> </a>
       </li>
    
     </ul>
@@ -113,9 +114,9 @@ const generatePDF = chauffeur => {
                   type="button"
                   style={{ backgroundColor: "#2E4661", padding: "10px" }}
                   class="btn btn-secondary btn-sm"
-                  onClick={() => generatePDF(this.state.chauffeur)}
+                  onClick={() => generatePDF(this.state.produit)}
                 >
-                 <i class="fa-solid fa-file-arrow-down"></i>Générer le rapport de chauffeur
+                 <i class="fa-solid fa-file-arrow-down"></i>Générer le rapport de produit
                 </button>
               </div>
 
@@ -125,9 +126,9 @@ const generatePDF = chauffeur => {
      
           <div className="row justify-content-center">
               <div  class="col-9">
-          <h1 style={{backgroundColor:'black', color:'white', padding:'5px',textAlign:'center',opacity:".50"}}>Gestion les chauffeur</h1>
+          <h1 style={{backgroundColor:'black', color:'white', padding:'5px',textAlign:'center',opacity:".50"}}>Gestion les produit</h1>
         <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                     <button className="btn btn-warning " ><a href="/TMSDash" style= {{textDecoration:'none', color:'black'}}><i className="fas fa-home"></i>Accuiel</a></button>
+                     <button className="btn btn-warning " ><a href="/" style= {{textDecoration:'none', color:'black'}}><i className="fas fa-home"></i>Accuiel</a></button>
                     </div> 
                   
         <div className="col-lg-3 mt-2 mb-2">
@@ -138,40 +139,40 @@ const generatePDF = chauffeur => {
           
           </input>
         </div>
-        <button className="btn btn-success"><a href= "/ajout_chauffeur" style={{textDecoration:'none',color:'white'}}><i className="fas fa-plus-circle"></i>Ajouter un nouveau chauffeur</a></button>
+        <button className="btn btn-success"><a href= "/ajout_produit" style={{textDecoration:'none',color:'white'}}><i className="fas fa-plus-circle"></i>Ajouter un nouveau produit</a></button>
         <table className="table">
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">cin</th>
-                <th scope="col">Nom</th>
-                <th scope="col">Prenom </th>
-                <th scope="col">Address</th>
-                <th scope="col">age</th>
-                <th scope="col">Action</th>
-
+                <th scope="col">reference</th>
+                <th scope="col">nom</th>
+                <th scope="col">quantite </th>
+                <th scope="col">prix</th>
+                <th scope="col">categorie</th>
+                
+               
               </tr>
             </thead>
             <tbody>
-                {this.state.chauffeur.map((chauffeur,index)=>(
+                {this.state.produit.map((produit,index)=>(
                   <tr key={index}>
                     <th scope="row">{index+1}</th>
-                    <td>{chauffeur.cin}</td>
-                    <td>{chauffeur.nom}</td>
-                    <td>{chauffeur.prenom}</td>
-                    <td>{chauffeur.address}</td>
-                    <td>{chauffeur.age}</td>
+                    <td>{produit.referenceproduit}</td>
+                    <td>{produit.nomproduit}</td>
+                    <td>{produit.quantiteproduit}</td>
+                    <td>{produit.prixproduit}</td>
+                    <td>{produit.categorie}</td>
                     <td>
-                      <a className="btn btn-primary" href={`/majChauffeur/${chauffeur._id}`}>
+                      <a className="btn btn-primary" href={`/majProduit/${produit._id}`}>
                         <i className="fas fa-edit"></i>Editer</a>
                     </td>
                     <td>
-                      <a className="btn btn-primary" href={`/accuielChauffeur/${chauffeur._id}`}>
+                      <a className="btn btn-primary" href={`/accuielProduit/${produit._id}`}>
                         <i className="fas fa-list"></i>Programme</a>
                     </td>
                    
                     <td>
-                      <a className="btn btn-danger" href="/accuielChauffeur" onClick={()=>this.onDelete(chauffeur._id)}><i className="fas fa-trash-alt"></i>supprimer</a><p></p>
+                      <a className="btn btn-danger" href="/accuielProduit" onClick={()=>this.onDelete(produit._id)}><i className="fas fa-trash-alt"></i>supprimer</a><p></p>
                     </td>
 
                   </tr>

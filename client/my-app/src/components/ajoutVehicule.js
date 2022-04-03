@@ -6,7 +6,7 @@ import moment from 'moment';
 
 
 
-export default class AjoutVehicle extends Component {
+export default class AjoutVehicule extends Component {
     constructor(props){
         super(props);
         this.state={
@@ -111,7 +111,7 @@ export default class AjoutVehicle extends Component {
                     DatamaintenanceError:""
                 })
             }
-            Swal.fire("ajout!","ajout Vehicle avec Success","success")
+            Swal.fire("ajout!","ajout Vehicule avec Success","success")
         })
 
     }
@@ -164,10 +164,10 @@ export default class AjoutVehicle extends Component {
         <a class="nav-link" href="/TMSDash">Tableau de bord</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/accuielVehcule"> &#62; Détails Véhicle </a>
+        <a class="nav-link" href="/accuielVehicule"> &#62; Détails Véhicle </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/accuielVehcule"> &#62; ajout Véhicle <span class="sr-only">(courant)</span> </a>
+        <a class="nav-link" href="/accuielVehicule"> &#62; ajout Véhicle <span class="sr-only">(courant)</span> </a>
       </li>
    
     </ul>
@@ -178,7 +178,7 @@ export default class AjoutVehicle extends Component {
             <div className= 'col-md-8 mt-8-4 mx-auto'>
               <h1 className="h3 mb-3 font-weight-normal">Ajouter un nouveau Véhicle</h1>
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                     <button className="btn btn-warning " ><a href="/accuielVehcule" style= {{textDecoration:'none', color:'black'}}><i className="fas fa-list"></i>voir liste Véhicle </a></button>
+                     <button className="btn btn-warning " ><a href="/accuielVehicule" style= {{textDecoration:'none', color:'black'}}><i className="fas fa-list"></i>voir liste Véhicle </a></button>
                     </div>         
                <form className="form-group" style={{marginBottom:'15px'}}> 
                 <div>

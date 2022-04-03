@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-export default class Editdriver extends React.Component{
+export default class EditChauffeur extends React.Component{
        
     constructor(props){
         super(props);
@@ -81,11 +81,11 @@ export default class Editdriver extends React.Component{
                             nom:nom,
                             prenom:prenom,
                             address:address,
-                            age:age,
+                            age:age
                         }
                         if(isValid){
                             console.log(data)
-                            axios.post(`http://localhost:5000/maj/${id}`,data).then((res)=>{
+                            axios.put(`http://localhost:5000/maj/${id}`,data).then((res)=>{
                                 if(res.data.success){
                                     this.setState({
                                      cin:"",

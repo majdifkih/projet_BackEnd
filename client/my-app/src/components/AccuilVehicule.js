@@ -4,26 +4,27 @@ import swal from 'sweetalert2'
 import './AccuilVehicule.css'
 import jsPDF from "jspdf";
 import "jspdf-autotable"; 
-import {Link} from 'react-router-dom';
-const generatePDF = vehicle => {
+
+
+const generatePDF = vehicule => {
   const doc = new jsPDF();
   const tableColumn = [" Matricule", "Kilométrage", "Consommation carburant", "Categorie", " Date maintenance"];
   const tableRows = [];
 
-  vehicle.map(vehicle => {
-    const vehicledata = [
-      vehicle.Matricule,
-      vehicle.Kilométrage,
-      vehicle.Consommationcarburant,
-      vehicle.Categorie,
-      vehicle.Datamaintenance,
+  vehicule.map(vehicule => {
+    const vehiculedata = [
+      vehicule.Matricule,
+      vehicule.Kilométrage,
+      vehicule.Consommationcarburant,
+      vehicule.Categorie,
+      vehicule.Datamaintenance,
  ];
-    tableRows.push(vehicledata);
+    tableRows.push(vehiculedata);
   })
   doc.text("FLEET TRACKING", 70,8).setFontSize(13);
-  doc.text("Rapport Vehicle  ", 14, 16).setFontSize(13); 
+  doc.text("Rapport Vehicule  ", 14, 16).setFontSize(13); 
   doc.autoTable(tableColumn, tableRows, { styles: { fontSize: 8, }, startY: 35 });
-  doc.save("Vehicle détails.pdf");
+  doc.save("Vehicule détails.pdf");
   
 }
 
@@ -31,54 +32,54 @@ const generatePDF = vehicle => {
 
 
 
-export default class AccuielVehicle extends Component {
+export default class AccuielVehicule extends Component {
     constructor(props){
         super(props);
 
         this.state={
-            vehicle:[]
+          vehicule:[]
         }
     }
     componentDidMount(){
-        this.getvehicle();
+        this.getvehicule();
     }
 
-    getvehicle(){
-        axios.get("http://localhost:8000/accuielVehcule").then(res=>{
+    getvehicule(){
+        axios.get("http://localhost:5000/accuielVehicule").then(res=>{
             if(res.data.success){
                 this.setState({
-                    vehicle:res.data.existingPosts
+                  vehicule:res.data.existingPosts
                 });
-                console.log(this.state.vehicle)
+                console.log(this.state.vehicule)
             }
         });
     }
 
     onDelete=(id)=>{
-      axios.delete(`http://localhost:8000/deleteVehicule/${id}`).then((res)=>{
-        this.getvehicle();
-      swal.fire("supprimer!","Supprimer vehicle avec success","erreur")
+      axios.delete(`http://localhost:5000/deleteVehicule/${id}`).then((res)=>{
+        this.getvehicule();
+      swal.fire("supprimer!","Supprimer vehicule avec success","erreur")
       })
     }
 
 
     //search
-    filterData(vehicle,searchresult){
-      const result = vehicle.filter((vehicle)=>
-        vehicle.Matricule.toLowerCase().includes(searchresult)||
-        vehicle.Kilométrage.toLowerCase().includes(searchresult)||
-        vehicle.Consommationcarburant.toLowerCase().includes(searchresult)||
-        vehicle.Categorie.toLowerCase().includes(searchresult)||
-        vehicle.Datamaintenance.toLowerCase().includes(searchresult)
+    filterData(vehicule,searchresult){
+      const result = vehicule.filter((vehicule)=>
+      vehicule.Matricule.toLowerCase().includes(searchresult)||
+      vehicule.Kilométrage.toLowerCase().includes(searchresult)||
+      vehicule.Consommationcarburant.toLowerCase().includes(searchresult)||
+      vehicule.Categorie.toLowerCase().includes(searchresult)||
+      vehicule.Datamaintenance.toLowerCase().includes(searchresult)
       )
-      this.setState({vehicle:result})
+      this.setState({vehicule:result})
     }
 
     //search
 
     handlesearch=(e)=>{
       const searchresult= e.currentTarget.value
-      axios.get("http://localhost:8000/accuielVehcule").then(res=>{
+      axios.get("http://localhost:5000/accuielVehicule").then(res=>{
             if(res.data.success){
                this.filterData(res.data.existingPosts,searchresult)
             }
@@ -100,11 +101,11 @@ export default class AccuielVehicle extends Component {
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <Link class="nav-link" to="/TMSDash"  > Tableau de bord </Link>
+        <a class="nav-link" href="/TMSDash"  > Tableau de bord </a>
       </li>
      
       <li class="nav-item">
-        <Link  class="nav-link" to="/ajout_vehicule"> &#62; Ajouter Vehicle <span class="sr-only">(courant)</span> </Link >
+        <a  class="nav-link" href="/ajout_vehicule"> &#62; Ajouter vehicule <span class="sr-only">(courant)</span> </a >
       </li>
    
     </ul>
@@ -118,9 +119,9 @@ export default class AccuielVehicle extends Component {
                   type="button"
                   style={{ backgroundColor: "#2E4661", padding: "10px" }}
                   class="btn btn-secondary btn-sm"
-                  onClick={() => generatePDF(this.state.vehicle)}
+                  onClick={() => generatePDF(this.state.vehicule)}
                 >
-                 <i class="fa-solid fa-file-arrow-down"></i>Générer le rapport de Chauffeur
+                 <i class="fa-solid fa-file-arrow-down"></i>Générer le rapport de vehicule
                 </button>
               </div>
 
@@ -129,9 +130,9 @@ export default class AccuielVehicle extends Component {
 
             <div class="row justify-content-evenly">
               <div  class="col-9">
-              <h1 style={{backgroundColor:'black', color:'white', padding:'5px',textAlign:'center' ,opacity:".50"}}>Gestion Vehicle </h1>
+              <h1 style={{backgroundColor:'black', color:'white', padding:'5px',textAlign:'center' ,opacity:".50"}}>Gestion vehicule </h1>
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                     <button className="btn btn-warning " ><Link to="/TMSDash" style= {{textDecoration:'none', color:'black'}}><i className="fas fa-home"></i>Accuiel</Link></button>
+                     <button className="btn btn-warning " ><a href="/TMSDash" style= {{textDecoration:'none', color:'black'}}><i className="fas fa-home"></i>Accuiel</a></button>
                     </div> 
             <div className="col-lg-3 mt-2 mb-2">
           <input className="form-control" 
@@ -141,7 +142,7 @@ export default class AccuielVehicle extends Component {
           
           </input>
         </div>
-           
+        <button className="btn btn-success"><a href= "/ajout_vehicule" style={{textDecoration:'none',color:'white'}}><i className="fas fa-plus-circle"></i>Ajouter Vehicule</a></button>
             <table className="table" >
                 <thead>
                   <tr>
@@ -156,25 +157,25 @@ export default class AccuielVehicle extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                    {this.state.vehicle.map((vehicle,index)=>(
-                      <tr>
+                    {this.state.vehicule.map((vehicule,index)=>(
+                      <tr key={index}>
                         <th scope="row">{index+1}</th>
-                        <td>{vehicle.Matricule}</td>
-                        <td>{vehicle.Kilométrage}</td>
-                        <td>{vehicle.Consommationcarburant}</td>
-                        <td>{vehicle.Categorie}</td>
-                        <td>{vehicle.Datamaintenance}</td>
+                        <td>{vehicule.Matricule}</td>
+                        <td>{vehicule.Kilométrage}</td>
+                        <td>{vehicule.Consommationcarburant}</td>
+                        <td>{vehicule.Categorie}</td>
+                        <td>{vehicule.Datamaintenance}</td>
                         <td>
-                          <Link className="btn btn-primary" to={`/majvehcule/${vehicle._id}`}>
-                            <i className="fas fa-edit"></i>Edit</Link>
+                          <a className="btn btn-primary" href={`/majvehcule/${vehicule._id}`}>
+                            <i className="fas fa-edit"></i>Edit</a>
                         </td>
                         <td>
-                      <Link className="btn btn-primary" to={`/#/${vehicle._id}`}>
-                        <i className="fas fa-list"></i>Programme</Link>
+                      <a className="btn btn-primary" href={`/#/${vehicule._id}`}>
+                        <i className="fas fa-list"></i>Programme</a>
                     </td>
                        
                         <td>
-                          <Link className="btn btn-danger" to="#" onClick={()=>this.onDelete(vehicle._id)} ><i className="fas fa-trash-alt"></i>Supprimer</Link>
+                          <a className="btn btn-danger" href="#" onClick={()=>this.onDelete(vehicule._id)} ><i className="fas fa-trash-alt"></i>Supprimer</a>
                         </td>
     
                       </tr>
@@ -182,7 +183,7 @@ export default class AccuielVehicle extends Component {
                 </tbody>
             </table>
     
-            <button className="btn btn-success"><Link to= "/ajout_vehicule" style={{textDecoration:'none',color:'white'}}><i className="fas fa-plus-circle"></i>Ajouter Vehicle</Link></button>
+           
             
               </div>
             

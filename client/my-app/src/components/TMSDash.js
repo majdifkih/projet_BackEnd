@@ -14,47 +14,6 @@ export default class TMSDash extends Component {
             
            
           <hr/>
-          <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          </div>
-          <div class="carousel-inner">
-         <div class="carousel-item active">
-               <img src="%PUBLIC_URL%../../tmain1.png"  height="400" class="d-block w-100" alt="..."/>
-         <div class="carousel-caption d-none d-md-block">
-              <h5>Prevent Covid 19</h5>
-              <p>COVID-19 affects different people in different ways. Most infected people will develop mild to moderate illness and recover without hospitalization.</p>
-       </div>
-       </div>
-         <div class="carousel-item">
-               <img src="%PUBLIC_URL%../../TMSn.jpg"   height="400" class="d-block w-100" alt="..."/>
-        <div class="carousel-caption d-none d-md-block">
-              <h5>Gestion du transport</h5>
-              <p> Rationalisez le processus de devis à contrat. Gérez efficacement le coût du fret, la gestion des commandes, la détermination des tarifs, la facturation et le règlement du fret pour le transport multimodal et intermodal</p>
-     </div>
-    </div>
-         <div class="carousel-item">
-               <img src="%PUBLIC_URL%../../driN.jpg" height="400" class="d-block w-100" alt="..."/>
-         <div class="carousel-caption d-none d-md-block">
-              <h5>Une plus grande satisfaction client</h5>
-              <p>La capacité à respecter les engagements des clients est essentielle pour toute entreprise en concurrence sur le marché mondial d'aujourd'hui. </p>
-      </div>
-     </div>
-    </div>
-               <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Précédent</span>
-              </button>
-               <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Suivant</span>
-               </button>
-</div>
-
-          <hr/>
-
           
   
             <div class="row">

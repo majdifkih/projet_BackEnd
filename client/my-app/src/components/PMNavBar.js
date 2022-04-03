@@ -26,26 +26,17 @@ class PMNavBar extends Component {
                 </Link>
             </li>
             <li>
-            <Link to="/" >
+            <Link to="/accuielProduit" >
                 <i class="fab fa-product-hunt"></i>
-                &nbsp; Material Stock
+                &nbsp; Produit
                 </Link>
             </li>
             <li>
-              <div className="dropdown">
-                <button className="dropbtn">
+            <a href="#">
+                    
                   <i class="fas fa-cubes"></i>
-                  &nbsp; Production
-                </button>
-                <div className="dropdown-content">
-                <Link to="/PMDashboard" >Production Dashboard</Link>
-                <Link to="/clientneworder" >Client New Orders</Link>
-                <Link to="/searchfac" >Search Factory</Link>
-                <Link to="/magictool" >Magic Tool</Link>
-                <Link to="/rawfacHome" >Raw Factory Dashboard</Link>
-                <Link to="/pmHome" >Register Factory Dashboard</Link>
-                </div>
-              </div>
+                  &nbsp; Partenaire</a>
+                
             </li>
             <li>
             <Link to="/" >

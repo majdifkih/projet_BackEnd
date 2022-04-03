@@ -3,7 +3,7 @@ import axios from 'axios'
 import Swal from 'sweetalert2';
 import moment from 'moment';
 
-export default class EditVehicle extends Component {
+export default class EditVehicule extends Component {
     constructor(props){
         super(props);
         this.state={
@@ -98,7 +98,7 @@ export default class EditVehicle extends Component {
                     Categorie:"",
                     Datamaintenance:""
                 })
-                Swal.fire("mise a jour !","mise a jour vehicle avec Success","success")
+                Swal.fire("mise a jour !","mise a jour vehicule avec Success","success")
             }
         })
     }
@@ -107,19 +107,19 @@ export default class EditVehicle extends Component {
 
     componentDidMount(){
         const id = this.props.match.params.id;
-        axios.get(`http://localhost:5000/vehicle/vehicleDash/${id}`).then((res)=>{
+        axios.get(`http://localhost:5000/accuielVehicule/${id}`).then((res)=>{
             if(res.data.success){
                 this.setState({
-                    Matricule:res.data.vehicle.Matricule,
-                    Kilométrage:res.data.vehicle.Kilométrage,
-                    Consommationcarburant:res.data.vehicle.Consommationcarburant,
-                    Categorie:res.data.vehicle.Categorie,
-                    Datamaintenance:res.data.vehicle.Datamaintenance,
+                    Matricule:res.data.vehicule.Matricule,
+                    Kilométrage:res.data.vehicule.Kilométrage,
+                    Consommationcarburant:res.data.vehicule.Consommationcarburant,
+                    Categorie:res.data.vehicule.Categorie,
+                    Datamaintenance:res.data.vehicule.Datamaintenance,
 
                 
                     
                 });
-                console.log(this.state.vehicle);
+                console.log(this.state.vehicule);
             }
         })
     }
@@ -134,9 +134,9 @@ export default class EditVehicle extends Component {
 
 
                 <div className= 'col-md-8 mt-8-4 mx-auto'>
-              <h1 className="h3 mb-3 font-weight-normal">mise a jour VEHICLE</h1>
+              <h1 className="h3 mb-3 font-weight-normal">mise a jour VEHICULE</h1>
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                     <button className="btn btn-warning " ><Link to="/vehicleDash"  style= {{textDecoration:'none', color:'black'}}><i className="fas fa-list"></i>voir Liste chaffeur</Link></button>
+                     <button className="btn btn-warning " ><a href="/accuielVehicule"  style= {{textDecoration:'none', color:'black'}}><i className="fas fa-list"></i>voir Liste Vehicule</a></button>
                     </div>          
                <form className="form-group" style={{marginBottom:'15px'}}> 
                 <div>
@@ -185,7 +185,7 @@ export default class EditVehicle extends Component {
 
 
 
-                    <button  className='btn btn-success ' type="submit" style={{marginTop:'15px'}} onClick={this.onSubmit}> <i className="fas fa-save"></i>&nbsp;mise a jour Vehicle</button>
+                    <button  className='btn btn-success ' type="submit" style={{marginTop:'15px'}} onClick={this.onSubmit}> <i className="fas fa-save"></i>&nbsp;mise a jour Vehicule</button>
                     &nbsp;
                        
                 </div>
