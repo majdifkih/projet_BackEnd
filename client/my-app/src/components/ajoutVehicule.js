@@ -167,7 +167,7 @@ export default class AjoutVehicule extends Component {
         <a class="nav-link" href="/accuielVehicule"> &#62; Détails Véhicle </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/accuielVehicule"> &#62; ajout Véhicle <span class="sr-only">(courant)</span> </a>
+        <a class="nav-link" href="/ajout_vehicule"> &#62; ajout Véhicle <span class="sr-only">(courant)</span> </a>
       </li>
    
     </ul>

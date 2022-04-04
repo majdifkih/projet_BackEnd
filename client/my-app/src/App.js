@@ -10,6 +10,7 @@ import { Routes, Route } from "react-router-dom";
 import AccuielVehicule from './components/AccuilVehicule';
 import EditVehicule from './components/EditVehicle';
 import Accuielproduit from './components/AccuilProduit';
+import AjoutProduit from './components/AjoutPrduit';
 export default class App extends Component {
   render() {
   
@@ -27,6 +28,7 @@ export default class App extends Component {
           <Route path="/ajout_vehicule" element={<AjoutVehicule />}/>
           <Route path="/accuielVehicule" element={<AccuielVehicule />}/>
           <Route path="/accuielProduit" element={<Accuielproduit />}/>
+          <Route path="/ajout_produit" element={<AjoutProduit />}/>
           <Route path="/TMSDash" element={<TMSDash />}/>
         </Routes>
 

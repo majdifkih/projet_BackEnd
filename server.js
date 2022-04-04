@@ -6,6 +6,7 @@ const mongoose= require('mongoose')
 const cors = require('cors')
 const Chauffeur = require("./models/chauffeur")
 const Vehicule = require("./models/vehicule")
+const Produit = require("./models/Produit")
 const bodyParser = require('body-parser')
 
 app.use(bodyParser.urlencoded({ extended: false }))
