@@ -32,10 +32,10 @@ class PMNavBar extends Component {
                 </Link>
             </li>
             <li>
-            <a href="#">
+            <Link to="/partenaireDash">
                     
                   <i class="fas fa-cubes"></i>
-                  &nbsp; Partenaire</a>
+                  &nbsp; Partenaire</Link>
                 
             </li>
             <li>

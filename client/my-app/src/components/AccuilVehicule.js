@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import swal from 'sweetalert2'
-import './AccuilVehicule.css'
+import './Accuil.css'
 import jsPDF from "jspdf";
 import "jspdf-autotable"; 
 

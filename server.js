@@ -25,7 +25,7 @@ app.post('/ajout_chauffeur',(req,res)=>{
           })
       }
       return res.status(200).json({
-          success:"save effactué avec succes"
+          success:"Chauffeur save effactué avec succes"
       });
   });
 });
@@ -78,11 +78,11 @@ app.get('/accuielChauffeur',(req,res)=>{
 app.delete('/deleteChauffeur/:id',(req,res)=>{
   Chauffeur.findByIdAndRemove(req.params.id ).exec((err,deleteChauffeur)=>{
       if(err) return res.status(400).json({
-          message:"delete incorrect",err
+          message:"Suppression incorrect",err
       });
 
       return res.json({
-          message:"supprime avec succes",deleteChauffeur
+          message:"Supprimer avec succes",deleteChauffeur
       });
 
       }
@@ -112,7 +112,7 @@ app.put(`/majChauffeur/:id`,(req,res)=>{
               return res.status(400).json({error:err});
           }
           return res.status(200).json({
-              success:"mise a jour avec succes"
+              success:"Mise a jour avec succes"
           });
       }
       
@@ -147,7 +147,7 @@ app.post('/ajout_vehicule',(req,res)=>{
             })
         }
         return res.status(200).json({
-            success:"vehicule save effactué avec succes"
+            success:"Vehicule save effactué avec succes"
         });
     });
   });
@@ -199,11 +199,11 @@ app.get('/accuielVehicule',(req,res)=>{
 app.delete("/deleteVehicule/:id",(req,res)=>{
     Vehicule.findByIdAndRemove(req.params.id ).exec((err,deleteVehicule)=>{
         if(err) return res.status(400).json({
-            message:"delete incorrect",err
+            message:"Suppression incorrect",err
         });
   
         return res.json({
-            message:"supprime avec succes",deleteVehicule
+            message:"Supprimer avec succes",deleteVehicule
         });
   
         }
@@ -234,7 +234,7 @@ app.put(`/majvehcule/:id`,(req,res)=>{
                 return res.status(400).json({error:err});
             }
             return res.status(200).json({
-                success:"mise a jour Vehicule avec succes"
+                success:"Mise a jour Vehicule avec succes"
             });
         }
         
@@ -289,11 +289,11 @@ app.post('/ajout_produit',(req,res)=>{
   app.delete("/deleteProduit/:id",(req,res)=>{
     Produit.findByIdAndRemove(req.params.id ).exec((err,deleteProduit)=>{
         if(err) return res.status(400).json({
-            message:"delete incorrect",err
+            message:"Suppression incorrect",err
         });
   
         return res.json({
-            message:"supprime Produit avec succes",deleteProduit
+            message:"Supprimer Produit avec succes",deleteProduit
         });
   
         }
@@ -303,7 +303,7 @@ app.post('/ajout_produit',(req,res)=>{
 
 
   //update
-  app.put(`/majProduit/:id`,(req,res)=>{
+  app.put('/majProduit/:id',(req,res)=>{
     Produit.findByIdAndUpdate(
         req.params.id,
         {
@@ -314,12 +314,145 @@ app.post('/ajout_produit',(req,res)=>{
                 return res.status(400).json({error:err});
             }
             return res.status(200).json({
-                success:"mise a jour Produit avec succes"
+                success:"Mise a jour Produit avec succes"
             });
         }
         
     );
   });
+  //client
+//add
+app.post('/ajout_client',(req,res)=>{
+    let new_client = new Client(req.body);
+  
+    new_client.save((err)=>{
+        if(err){
+            return res.status(400).json({
+                error:err
+            })
+        }
+        return res.status(200).json({
+            success:"Client save effactué avec succes"
+        });
+    });
+  });
+  //get
+  app.get('/accuielClient',(req,res)=>{
+    Client.find().exec((err,client)=>{
+        if(err){
+            return res.status(400).json({
+                error:err
+            });
+        }
+        return res.status(200).json({
+            success:true,
+            existingPosts:client
+        });
+    });
+  });
+
+  //delete
+  app.delete("/deleteClient/:id",(req,res)=>{
+    Client.findByIdAndRemove(req.params.id ).exec((err,deleteClient)=>{
+        if(err) return res.status(400).json({
+            message:"Suppression incorrect",err
+        });
+  
+        return res.json({
+            message:"Supprimer Client avec succes",deleteClient
+        });
+  
+        }
+    )
+  })
+
+
+
+  //update
+  app.put('/majClient/:id',(req,res)=>{
+    Client.findByIdAndUpdate(
+        req.params.id,
+        {
+            $set:req.body
+        },
+        (err,client)=>{
+            if(err){
+                return res.status(400).json({error:err});
+            }
+            return res.status(200).json({
+                success:"Mise a jour Client avec succes"
+            });
+        }
+        
+    );
+  });
+//Fournisseur
+//add
+app.post('/ajout_fournisseur',(req,res)=>{
+    let new_fournisseur = new Fournisseur(req.body);
+  
+    new_fournisseur.save((err)=>{
+        if(err){
+            return res.status(400).json({
+                error:err
+            })
+        }
+        return res.status(200).json({
+            success:"Fournisseur save effactué avec succes"
+        });
+    });
+  });
+  //get
+  app.get('/accuielFournisseur',(req,res)=>{
+    Fournisseur.find().exec((err,fournisseur)=>{
+        if(err){
+            return res.status(400).json({
+                error:err
+            });
+        }
+        return res.status(200).json({
+            success:true,
+            existingPosts:fournisseur
+        });
+    });
+  });
+
+  //delete
+  app.delete("/deleteFournisseur/:id",(req,res)=>{
+    Fournisseur.findByIdAndRemove(req.params.id ).exec((err,deleteFournisseur)=>{
+        if(err) return res.status(400).json({
+            message:"Suppression incorrect",err
+        });
+  
+        return res.json({
+            message:"Supprimer Fournisseur avec succes",deleteFournisseur
+        });
+  
+        }
+    )
+  })
+
+
+
+  //update
+  app.put('/majFournisseur/:id',(req,res)=>{
+    Fournisseur.findByIdAndUpdate(
+        req.params.id,
+        {
+            $set:req.body
+        },
+        (err,fournisseur)=>{
+            if(err){
+                return res.status(400).json({error:err});
+            }
+            return res.status(200).json({
+                success:"Mise a jour Fournisseur avec succes"
+            });
+        }
+        
+    );
+  });
+
 
 mongoose.connect('mongodb+srv://admin:admin123@cluster0.rkyui.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
   (err, done)=>{
