@@ -72,7 +72,7 @@ export default class TMSDash extends Component {
                     <p class="card-text">
                     
                     </p>
-                    <a href="/ajout_vehicule" className="btn btn-primary" style= {{textDecoration:'none', color:'white'}}><i className="fas fa-truck-monster"></i> aller vers liste véhicule </a>
+                    <a href="/accuielVehicule" className="btn btn-primary" style= {{textDecoration:'none', color:'white'}}><i className="fas fa-truck-monster"></i> aller vers liste véhicule </a>
                   </div>
                 </div>
                 <br/>
