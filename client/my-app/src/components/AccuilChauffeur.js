@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component ,useState,useEffect} from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import './Accuil.css';
@@ -9,7 +9,7 @@ const generatePDF = chauffeur => {
     const doc = new jsPDF();
     const tableColumn = ["cin", "nom","prenom", "Address", "age"];
     const tableRows = [];
-  
+    
     chauffeur.map(chauffeur => {
       const chauffeurdata = [
         chauffeur.cin,
@@ -28,61 +28,55 @@ const generatePDF = chauffeur => {
   }
 
 
+  
+  const onDelete=(id)=>{
+    axios.delete(`/deleteChauffeur/${id}`).then((res)=>{
+      Swal.fire("supprimer","supprime avec succes","warning")
+      //getchauffeur();
+    })
+  }
+  // const filterData=(chauffeur,searchresult)=>{
+  //   const [chauffeur,setChauffeur] = useState([]);
+  //   const result = chauffeur.filter((chauffeur)=>
+  //   chauffeur.cin.toLowerCase().includes(searchresult)||
+  //   chauffeur.nom.toLowerCase().includes(searchresult)||
+  //   chauffeur.prenom.toLowerCase().includes(searchresult)||
+  //   chauffeur.address.toLowerCase().includes(searchresult)||
+  //   chauffeur.age.toLowerCase().includes(searchresult)
+  
+  //   )
+  
+  //   setChauffeur(result)
+  
+  // }
 
-
-  export default class AccuielChauffeur extends Component {
+  
+  // const handlesearch=(e)=>{
+  //   const searchresult = e.currentTarget.value
+  //   axios.get("http://localhost:5000/accuielChauffeur").then(res=>{
+  //     if(res.data.success){
+  //     filterData(res.data.existingPosts,searchresult)
+  //        }
+  //       })}
+        
+  const AccuielChauffeur = (props)=> {
  
-    constructor(props){
-     
-        super(props);
-    
-        this.state={
-          chauffeur:[]
-        }
-      }
-      componentDidMount(){
-        this.getchauffeur();
-      }
-     
-      getchauffeur(){
-          axios.get("http://localhost:5000/accuielChauffeur").then(res=>{
-            if(res.data.success){
-              this.setState({
-                chauffeur:res.data.existingPosts
-              });
-              console.log(this.state.chauffeur)
-            }
-          })
-        }
-        onDelete=(id)=>{
-            axios.delete(`/deleteChauffeur/${id}`).then((res)=>{
-              Swal.fire("supprimer","supprime avec succes","warning")
-              this.getchauffeur();
-            })
-          }
+    const [chauffeur,setChauffeur] = useState([]);
+    useEffect(()=>{
+       getchauffeur()
+     });
 
-          filterData(chauffeur,searchresult){
-            const result = chauffeur.filter((chauffeur)=>
-            chauffeur.cin.toLowerCase().includes(searchresult)||
-            chauffeur.nom.toLowerCase().includes(searchresult)||
-            chauffeur.prenom.toLowerCase().includes(searchresult)||
-            chauffeur.address.toLowerCase().includes(searchresult)||
-            chauffeur.age.toLowerCase().includes(searchresult)
+    const getchauffeur=()=>{
+      axios.get("http://localhost:5000/accuielChauffeur").then(res=>{
+        if(res.data.success){
+          setChauffeur( res.data.existingPosts);
           
-            )
+          console.log(chauffeur)
+        }
+      })
+    } 
+    
           
-            this.setState({chauffeur:result})
-          
-          }
-          handlesearch=(e)=>{
-            const searchresult = e.currentTarget.value
-            axios.get("http://localhost:5000/accuielChauffeur").then(res=>{
-              if(res.data.success){
-              this.filterData(res.data.existingPosts,searchresult)
-                 }
-             });
-          }
-          render() {
             return (
                  <div id="wrapper" className="toggled">
                  <div id="page-content-wrapper">
@@ -91,16 +85,16 @@ const generatePDF = chauffeur => {
         
           
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark  rounded-3">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span className="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="/TMSDash">Tableau de bord</a>
+  <div className="collapse navbar-collapse" id="navbarNav">
+    <ul className="navbar-nav">
+      <li className="nav-item active">
+        <a className="nav-link" href="/TMSDash">Tableau de bord</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/accuielChauffeur"> &#62; Chauffeur détails <span class="sr-only">(courant)</span> </a>
+      <li className="nav-item">
+        <a className="nav-link" href="/accuielChauffeur"> &#62; Chauffeur détails <span className="sr-only">(courant)</span> </a>
       </li>
    
     </ul>
@@ -112,10 +106,10 @@ const generatePDF = chauffeur => {
                 <button
                   type="button"
                   style={{ backgroundColor: "#2E4661", padding: "10px" }}
-                  class="btn btn-secondary btn-sm"
+                  className="btn btn-secondary btn-sm"
                   onClick={() => generatePDF(this.state.chauffeur)}
                 >
-                 <i class="fa-solid fa-file-arrow-down"></i>Générer le rapport de chauffeur
+                 <i className="fa-solid fa-file-arrow-down"></i>Générer le rapport de chauffeur
                 </button>
               </div>
 
@@ -124,7 +118,7 @@ const generatePDF = chauffeur => {
 
      
           <div className="row justify-content-center">
-              <div  class="col-9">
+              <div  className="col-9">
           <h1 style={{backgroundColor:'black', color:'white', padding:'5px',textAlign:'center',opacity:".50"}}>Gestion les chauffeur</h1>
         <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                      <button className="btn btn-warning " ><a href="/TMSDash" style= {{textDecoration:'none', color:'black'}}><i className="fas fa-home"></i>Accuiel</a></button>
@@ -134,7 +128,8 @@ const generatePDF = chauffeur => {
           <input className="form-control" 
           type="search" placeholder="chercher" 
           name="search" 
-          onChange={this.handlesearch}>
+          //onChange={this.handlesearch}
+          >
           
           </input>
         </div>
@@ -153,14 +148,15 @@ const generatePDF = chauffeur => {
               </tr>
             </thead>
             <tbody>
-                {this.state.chauffeur.map((chauffeur,index)=>(
+                {chauffeur.map((chauffeur,index)=>(
                   <tr key={index}>
                     <th scope="row">{index+1}</th>
-                    <td>{chauffeur.cin}</td>
+                     <td>{chauffeur.cin}</td>
                     <td>{chauffeur.nom}</td>
                     <td>{chauffeur.prenom}</td>
                     <td>{chauffeur.address}</td>
-                    <td>{chauffeur.age}</td>
+                    <td>{chauffeur.age}</td> 
+                    
                     <td>
                       <a className="btn btn-primary" href={`/majChauffeur/${chauffeur._id}`}>
                         <i className="fas fa-edit"></i>Editer</a>
@@ -171,7 +167,7 @@ const generatePDF = chauffeur => {
                     </td>
                    
                     <td>
-                      <a className="btn btn-danger" href="/accuielChauffeur" onClick={()=>this.onDelete(chauffeur._id)}><i className="fas fa-trash-alt"></i>supprimer</a><p></p>
+                      <a className="btn btn-danger" href="/accuielChauffeur" onClick={()=>onDelete(chauffeur._id)}><i className="fas fa-trash-alt"></i>supprimer</a><p></p>
                     </td>
 
                   </tr>
@@ -194,6 +190,8 @@ const generatePDF = chauffeur => {
       </div>
             )
 
-          }
+          
 
 }
+
+export default  AccuielChauffeur;

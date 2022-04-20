@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import "./styleSideNav.css";
 import {Link} from 'react-router-dom';
-class PMNavBar extends Component {
-  render() {
+import { AcroFormCheckBox } from "jspdf";
+function PMNavBar(){
+  
     return (
       <div id="wrapper" className="toggled">
         <div id="sidebar-wrapper">
@@ -11,131 +12,222 @@ class PMNavBar extends Component {
             <br />
             &nbsp; &nbsp; &nbsp;
             <img
-              src="%PUBLIC_URL%../../../fleet.jpg"
-              class="rounded-circle"
-              width="150"
-              height="150"
+              src="%PUBLIC_URL%../../../qlog1.JPG"
+              className="circle"
+              width="200"
+              height="40"
               alt=""
             />
             <br />
             <br />
             <li>
             <Link to="/" >
-                <i class="fas fa-sort-amount-up-alt"></i>
-                &nbsp; Order Mangment
+            <img
+              src="%PUBLIC_URL%../../../watch.JPG"
+              className="circle"
+              width="20"
+              height="20"
+              alt=""
+            /> Accueil
                 </Link>
             </li>
             <li>
             <Link to="/accuielProduit" >
-                <i class="fab fa-product-hunt"></i>
-                &nbsp; Produit
+            <img
+              src="%PUBLIC_URL%../../../watch.JPG"
+              className="circle"
+              width="20"
+              height="20"
+              alt=""
+            /> Fleet and Devices
                 </Link>
             </li>
             <li>
             <Link to="/partenaireDash">
                     
-                  <i class="fas fa-cubes"></i>
-                  &nbsp; Partenaire</Link>
+            <img
+              src="%PUBLIC_URL%../../../gps.JPG"
+              className="circle"
+              width="20"
+              height="20"
+              alt=""
+            /> Fleet Tracking</Link>
                 
             </li>
             <li>
             <Link to="/" >
-                <i class="fas fa-file-import"></i>
-                &nbsp; Import Management
+            <img
+              src="%PUBLIC_URL%../../../clock.JPG"
+              className="circle"
+              width="17"
+              height="17"
+              alt=""
+            /> Stores
                 </Link>
             </li>
             <li>
             <Link to="/" >
-                <i class="fas fa-tasks"></i>
-                &nbsp; Quality Check
+            <img
+              src="%PUBLIC_URL%../../../setting.JPG"
+              className="circle"
+              width="17"
+              height="17"
+              alt=""
+            /> Inventory
                 </Link>
             </li>
             <li>
               <Link to="/" >
-                <i class="fas fa-file-invoice-dollar"></i>
-                &nbsp; Accounts and Profits
+              <img
+              src="%PUBLIC_URL%../../../user.JPG"
+              className="circle"
+              width="17"
+              height="17"
+              alt=""
+            /> Clients
               </Link>
             </li>
             <li>
             
               <Link to="/TMSDash" >
-                <i class="fas fa-truck"></i>
-                &nbsp; Transport
+              <img
+              src="%PUBLIC_URL%../../../user1.JPG"
+              className="circle"
+              width="17"
+              height="17"
+              alt=""
+            /> Users
                 </Link>
             </li>
+            
             <li>
             <Link to="/" >
-                <i class="fas fa-users-cog"></i>
-                &nbsp; Admin
-                </Link>
-            </li>
-            <li>
-            <Link to="/" >
-                <i class="fas fa-file-invoice"></i>
-                &nbsp; Reports
+            <img
+              src="%PUBLIC_URL%../../../logout.JPG"
+              className="circle"
+              width="20"
+              height="20"
+              alt=""
+            /> Log out
               </Link>
             </li>
           </ul>
         </div>
 
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-">
           {/* <!-- Image and text --> */}
-          {/*<a class="navbar-brand" href=""></a>*/}
-           <div className="container-fluid">
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarTogglerDemo02"
-              aria-controls="navbarTogglerDemo02"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                <Link to="/" className="nav-link active" aria-current="page" >
-                    Accuiel
+          {/*<a className="navbar-brand" href=""></a>*/}
+           
+         
+            <div className="collapse navbar-collapse " id="navbarTogglerDemo02">
+            
+              <ul className="navbar-nav me-auto mb-lg-0 col">
+                
+            <h4 className="py-2 px-4">Overview</h4> 
+  
+                   
+              <div className="position-absolute top-100 end-0 translate-middle-y">
+                <li className="nav-item  ">
+                <Link to="/" className="nav-link active text-black "  aria-current="page" >
+                   Hamdi Ghassem <img
+              src="%PUBLIC_URL%../../../photo.JPG"
+              className="circle"
+              width="30"
+              height="30"
+              alt=""
+            />
                     </Link>
-                </li>
-                <li className="nav-item">
-                <Link to="/" className="nav-link">
-                    <i class="fas fa-question-circle"></i>
-                    &nbsp; aide
-                    </Link>
-                </li>
-
-                <li className="nav-item">
-                <Link to="/" className="nav-link active" aria-current="page" >
-                    <i class="fas fa-phone-square"></i> &nbsp;Contact
-                    </Link>
-                </li>
-
-                <div class="position-absolute top-50 end-0 translate-middle-y">
-                  <button
+                    <button
                     type="button"
-                    class="btn btn-primary position-relative"
+                    className="btn"
                   >
-                    <i class="fas fa-bell"></i>
-                    <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
-                      <span class="visually-hidden">New alerts</span>
-                    </span>
+                    <img
+              src="%PUBLIC_URL%../../../ALERT.JPG"
+              className="circle"
+              width="20"
+              height="20"
+              alt=""
+            />
                   </button>
+                </li>
+                </div>
+                
+                  
                   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                </div>
+                
 
                 
               </ul>
             </div>
-          </div>
-        </nav>
+          
+         </nav>
+         <div className="box ">
+         <div className="screen-4">
+                <h4>Demandes </h4>
+               
+                    
+              </div>
+              <div className="screen-5">
+                <h4>Chauffeurs Actives</h4>
+              
+                    
+              </div>
+              <div className="screen-6">
+                <h4>avertissements</h4>
+               
+                    
+              </div>
+              <div className="screen-7">
+                <h4>Appareilles Connectés</h4>
+               
+                    
+              </div>
+         <div className="screen-2">
+           
+         
+    <h4>Appareilles</h4>
+    <form>
+      <div className="form-check">
+        <input className="form-check-input" type="radio" name="radio" id="radio1" value="o1"/>
+        <label className="form-check-label" for="radio1">Option 1</label><button  type="button"
+                    className=""></button>
+      </div>
+      <div className="form-check">
+        <input className="form-check-input" type="radio" name="radio" id="radio2" value="o2"/>
+        <label className="form-check-label" for="radio2">Option 2</label>
+      </div>
+    </form>
+ 
+              </div>
+              <div className="screen-3">
+                <h4>Demandes Clients</h4>
+               <div className="span"><span>Total:</span></div> 
+                    <input ></input>
+                    
+              </div>
+         <div className="screen-1">
+                    
+                    <img
+              src="%PUBLIC_URL%../../../graphic.JPG"
+              className="circle"
+              width="200"
+              height="200"
+              alt=""/>
+                <table>
+          <tr className="tr1">eeee</tr>
+          <tr className="tr2">eeee</tr>
+          <tr className="tr3">eeee</tr>
+          <tr className="tr3">eeee</tr>
+          <tr className="tr3">eeee</tr>
+          </table>
+              </div>
+        
+      </div>
       </div>
     );
   }
-}
+
 
 export default PMNavBar;

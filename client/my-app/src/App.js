@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Routes, Route } from "react-router-dom";
 import './App.css';
 import AjoutChauf from "./components/ajoutChauffeur";
@@ -15,18 +15,19 @@ import AjoutProduit from './components/ajoutProduit';
 import Editproduit from './components/EditProduit';
 import AccuielClient from './components/AccuilClient';
 import AccuielFournisseur from './components/AccuilFournisseur';
-export default class App extends Component {
-  render() {
+
+export default function App () {
+  
   
   return (
       <div>
         <PMNavBar/>
       
-      
+        
         <Routes>
         <Route path="/accuielChauffeur" exact element={<AccuielChauffeur />}/>
           <Route path="/ajout_chauffeur" element={<AjoutChauf />}/>
-          
+         
           <Route path="/majChauffeur/:id" element={<EditChauffeur />}/>
           <Route path="/majvehcule/:id" element={<EditVehicule />}/>
           <Route path="/ajout_vehicule" element={<AjoutVehicule />}/>
@@ -47,7 +48,7 @@ export default class App extends Component {
 
 
   )
-}}
+}
 
 
 
