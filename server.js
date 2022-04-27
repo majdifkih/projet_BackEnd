@@ -1,7 +1,7 @@
 const express = require('express')
 const req = require('express/lib/request')
 const app = express()
-const port =  process.env.PORT || 5000
+const port = 5000
 const mongoose= require('mongoose')
 const cors = require('cors')
 const Chauffeur = require("./models/chauffeur")
@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(bodyParser.json())
 app.use(cors())
-dotenv.config();
+
 //chauffeur
 //add
 app.post('/ajout_chauffeur',(req,res)=>{
