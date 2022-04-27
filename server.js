@@ -484,7 +484,7 @@ app.post('/ajout_shop',(req,res)=>{
   });
 
 MONGODB_URL='mongodb+srv://admin:admin123@cluster0.rkyui.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
-mongoose.connect(process.env.MONGODB_URL ,
+mongoose.connect(MONGODB_URL ,
   (err, done)=>{
     if (err){
         console.log(err)
