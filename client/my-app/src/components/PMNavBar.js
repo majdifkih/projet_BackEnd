@@ -13,11 +13,11 @@ function PMNavBar(){
            <div id="sidebar-wrapper">
           
              <ul className="sidebar-nav">
-             <input type="checkbox" id="check"/>
+             {/* <input type="checkbox" id="check"/>
           <label for="check">
             <i className="fas fa-bars" id="btn"></i>
             <i className="fas fa-times" id="cancel"></i>
-          </label>
+          </label> */}
         
                <br />
                <br />
@@ -116,36 +116,10 @@ function PMNavBar(){
                </li>
              </ul>
            </div>
-     <div  className="header">
-        
-            <div  className="nav">
-            
-            <div className="position-left  top-50 end-0 translate-middle-y">
-                    <img src="%PUBLIC_URL%../../../alert.JPG" alt=""/></div>
-                <div  className="user">
+     
                     
                 
-                    <div className="position-absolute top-50 end-0 translate-middle-y">
-                <ul><li className="nav-item  ">
-                  <Link to="/" className="nav-link active text-black "  aria-current="page" >
-                      Hamdi Ghassem <img
-                 src="%PUBLIC_URL%../../../photo.JPG"
-                 className="circle" />
-                       </Link>
-                       
-                       </li>
-                       </ul>
-                    
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div className="widgets">
-          <Login type="user" />
-          <Login type="order" />
-          <Login type="earning" />
-          <Login type="balance" />
-        </div>
+                  
   </div>
   
     );
