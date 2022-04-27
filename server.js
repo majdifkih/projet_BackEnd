@@ -4,6 +4,7 @@ const app = express()
 const port =  5000
 const mongoose= require('mongoose')
 const cors = require('cors')
+import dotenv from "dotenv";
 const Chauffeur = require("./models/chauffeur")
 const Vehicule = require("./models/vehicule")
 const Produit = require("./models/Produit")
@@ -15,6 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(bodyParser.json())
 app.use(cors())
+dotenv.config();
 //chauffeur
 //add
 app.post('/ajout_chauffeur',(req,res)=>{
@@ -52,7 +54,7 @@ app.post('/ajout_chauffeur',(req,res)=>{
  });*/}
 
 //get
-app.get('/accuielChauffeur',(req,res)=>{
+app.get('/',(req,res)=>{
   Chauffeur.find().exec((err,chauffeur)=>{
       if(err){
           return res.status(400).json({
@@ -481,8 +483,8 @@ app.post('/ajout_shop',(req,res)=>{
     });
   });
 
-
-mongoose.connect('mongodb+srv://admin:admin123@cluster0.rkyui.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+MONGODB_URL='mongodb+srv://admin:admin123@cluster0.rkyui.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+mongoose.connect(process.env.MONGODB_URL ,
   (err, done)=>{
     if (err){
         console.log(err)
