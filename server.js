@@ -4,7 +4,6 @@ const app = express()
 const port =  process.env.PORT || 5000
 const mongoose= require('mongoose')
 const cors = require('cors')
-import dotenv from "dotenv";
 const Chauffeur = require("./models/chauffeur")
 const Vehicule = require("./models/vehicule")
 const Produit = require("./models/Produit")
