@@ -15,19 +15,23 @@ import AjoutProduit from './components/ajoutProduit';
 import Editproduit from './components/EditProduit';
 import AccuielClient from './components/AccuilClient';
 import AccuielFournisseur from './components/AccuilFournisseur';
+import Dash from './components/Dashboard';
+import Login from './components/login';
 
 export default function App () {
   
   
   return (
       <div>
+        
         <PMNavBar/>
       
         
         <Routes>
         <Route path="/accuielChauffeur" exact element={<AccuielChauffeur />}/>
           <Route path="/ajout_chauffeur" element={<AjoutChauf />}/>
-         
+          <Route path="/Dash" element={<Dash />}/>
+          <Route path="/login" element={<Login/>}/>
           <Route path="/majChauffeur/:id" element={<EditChauffeur />}/>
           <Route path="/majvehcule/:id" element={<EditVehicule />}/>
           <Route path="/ajout_vehicule" element={<AjoutVehicule />}/>

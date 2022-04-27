@@ -149,6 +149,7 @@ const generatePDF = produit => {
                 <th scope="col">quantite </th>
                 <th scope="col">prix</th>
                 <th scope="col">categorie</th>
+                <th scope="col">Action</th>
                 
                
               </tr>

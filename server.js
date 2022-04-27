@@ -1,12 +1,14 @@
 const express = require('express')
 const req = require('express/lib/request')
 const app = express()
-const port = 5000
+const port = process.env.PORT|| 5000
 const mongoose= require('mongoose')
 const cors = require('cors')
 const Chauffeur = require("./models/chauffeur")
 const Vehicule = require("./models/vehicule")
 const Produit = require("./models/Produit")
+const Shops = require("./models/shop")
+
 const bodyParser = require('body-parser')
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -451,6 +453,32 @@ app.post('/ajout_fournisseur',(req,res)=>{
         }
         
     );
+  });
+  app.get('/shops', (req, res, next) => {
+    const options = {
+        location: {
+            $geoWithin: {
+                $centerSphere: [[77.4520708, 28.68467], 15 / 3963.2]
+            }
+        }
+    }
+    Shops.find(options).then(data => {
+        res.send(data);
+    })
+});
+app.post('/ajout_shop',(req,res)=>{
+    let new_shop = new Shops(req.body);
+  
+    new_shop.save((err)=>{
+        if(err){
+            return res.status(400).json({
+                error:err
+            })
+        }
+        return res.status(200).json({
+            success:"shop save effactué avec succes"
+        });
+    });
   });
 
 
