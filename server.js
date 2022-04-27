@@ -1,7 +1,7 @@
 const express = require('express')
 const req = require('express/lib/request')
 const app = express()
-const port = process.env.PORT|| 5000
+const port =  5000
 const mongoose= require('mongoose')
 const cors = require('cors')
 const Chauffeur = require("./models/chauffeur")
