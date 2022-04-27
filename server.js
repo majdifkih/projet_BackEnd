@@ -1,7 +1,7 @@
 const express = require('express')
 const req = require('express/lib/request')
 const app = express()
-const port = 5000
+
 const mongoose= require('mongoose')
 const cors = require('cors')
 const Chauffeur = require("./models/chauffeur")
@@ -496,4 +496,4 @@ mongoose.connect(MONGODB_URL ,
 );
 
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(process.env.PORT || 3000);
