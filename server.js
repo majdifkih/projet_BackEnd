@@ -35,23 +35,6 @@ app.post('/ajout_chauffeur',(req,res)=>{
 
 
 
-{/*app.post("/ajout_chauffeur" , async (req,res) => {
-    try{
-      let new_chauffeur = new Chauffeur({
-         cin : req.body.cin ,
-         nom : req.body.nom ,
-         prenom : req.body.prenom ,
-         address : req.body.address ,
-         age : req.body.age 
- 
-      });
-      await new_chauffeur.save()
-      console.log('save effactué avec succes!');
-     } catch (err) {
-        console.log(err);
-     }
- });*/}
-
 //get
 app.get('/',(req,res)=>{
   Chauffeur.find().exec((err,chauffeur)=>{
@@ -67,16 +50,7 @@ app.get('/',(req,res)=>{
   });
 });
 
-{/*app.get("/accuielChauffeur", async (req, res) => {
-    try {
-        await Chauffeur.find({})
-        .then(result => {
-          res.send(result);
-        });
-      } catch (err) {
-          console.log(err);
-      }
-});*/}
+
 //delete
 app.delete('/deleteChauffeur/:id',(req,res)=>{
   Chauffeur.findByIdAndRemove(req.params.id ).exec((err,deleteChauffeur)=>{
@@ -93,16 +67,7 @@ app.delete('/deleteChauffeur/:id',(req,res)=>{
 })
 
 
-{/*app.delete("/deleteChauffeur/:id", async (req, res) => {
-    try {
-        await Chauffeur.findOneAndDelete({id:req.params.id})
-        
-        console.log("supprime avec succes !");
-        
-      } catch (err) {
-          console.log(err);
-      }
-});*/}
+
 //update
 app.put(`/majChauffeur/:id`,(req,res)=>{
   Chauffeur.findByIdAndUpdate(
@@ -122,18 +87,7 @@ app.put(`/majChauffeur/:id`,(req,res)=>{
   );
 });
 
-{/*app.put("/maj/:id", async (req, res) => {
-    try {
-        await Chauffeur.findOneAndUpdate({id:req.params.id},{
-            address : req.body.address
-        });
-        
-        console.log("mise a jour avec succes !");
-        
-      } catch (err) {
-          console.log(err);
-      }
-});*/}
+
 
 
 
@@ -152,6 +106,12 @@ app.post('/ajout_vehicule',(req,res)=>{
         return res.status(200).json({
             success:"Vehicule save effactué avec succes"
         });
+    });
+  });
+  app.post('/test',(req,res)=>{
+      console.log("arduino detected");
+    return res.status(200).json({
+        success:"Vehicule save effactué avec succes"
     });
   });
 
