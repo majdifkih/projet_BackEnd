@@ -36,7 +36,7 @@ app.post('/ajout_chauffeur',(req,res)=>{
 
 
 //get
-app.get('/',(req,res)=>{
+app.get('/accuielChauffeur',(req,res)=>{
   Chauffeur.find().exec((err,chauffeur)=>{
       if(err){
           return res.status(400).json({
@@ -427,7 +427,7 @@ app.post('/ajout_fournisseur',(req,res)=>{
         res.send(data);
     })
 });
-app.post('/ajout_shop',(req,res)=>{
+app.post('/',(req,res)=>{
     let new_shop = new Shops(req.body);
   
     new_shop.save((err)=>{
