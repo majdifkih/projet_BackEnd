@@ -110,7 +110,7 @@ app.post('/ajout_vehicule',(req,res)=>{
   });
   app.post('/test',(req,res)=>{
     let new_shop = new Shops(req.body);
-  new_vehicule.save((err)=>{
+  new_shop.save((err)=>{
     console.log("arduino detected");
         if(err){
             return res.status(400).json({
