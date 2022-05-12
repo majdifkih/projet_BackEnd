@@ -109,20 +109,11 @@ app.post('/ajout_vehicule',(req,res)=>{
     });
   });
   app.post('/test',(req,res)=>{
-    let new_shop = new Shops(req.body);
-  new_shop.save((err)=>{
-    console.log("arduino detected");
-        if(err){
-            return res.status(400).json({
-                error:err
-            })
-        }
-        return res.status(200).json({
-            
-            success:"Shop save effactué avec succes"
-        });
-    });
       
+      console.log("arduino detected");
+    return res.status(200).json({
+        success:"Vehicule save effactué avec succes"
+    });
   });
 
 {/*app.post("/ajout_vehicule" , async (req,res) => {
