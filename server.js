@@ -115,6 +115,13 @@ app.post('/ajout_vehicule',(req,res)=>{
         success:"Vehicule save effactué avec succes"
     });
   });
+  app.get('/test/:data',(req,res)=>{
+      
+    console.log(req.params.data);
+  return res.status(200).json({
+      success:"Vehicule save effactué avec succes"
+  });
+});
 
 {/*app.post("/ajout_vehicule" , async (req,res) => {
     try{
