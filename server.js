@@ -452,6 +452,7 @@ app.post('/ajout_fournisseur',(req,res)=>{
 
     try {
        await Store.findOne({info: req.params.info}, async(err,result)=> {
+        console.log(req.params.info);
           if(err){
              console.log(err)
           }if(result){
