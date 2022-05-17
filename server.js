@@ -434,38 +434,56 @@ app.post('/ajout_fournisseur',(req,res)=>{
 
   
 
- app.get('/test/:info', async (req, res) =>{
+//  app.get('/test/:info', async (req, res) =>{
 
-    try {
-       await Store.findOne({info: req.params.info}, async(err,result)=> {
-        console.log(req.params.info);
-          if(err){
-             console.log(err)
-          }if(result){
-             res.send(result)
-          }
-       }).clone()
-    } catch (error) {
-       console.log(error);
+//     try {
+//        await Store.findOne({info: req.params.info}, async(err,result)=> {
+//         console.log(req.params.info);
+//           if(err){
+//              console.log(err)
+//           }if(result){
+//              res.send(result)
+//           }
+//        }).clone()
+//     } catch (error) {
+//        console.log(error);
+//     }
+//  });
+
+
+//  app.post('/test', async (req, res)=> {
+//     try {
        
-    }
+//        let new_store = new Store ({
+//           info :req.params.info ,
+//        });
+//        await new_store.save()
+//        res.send('store added !')   
+//     } catch (err) {
+//        console.log(err);
+//     }
+//  })
+
+ app.get('/test/:info',(req,res)=>{
+   
+    let tab=req.params.info
+
        
- });
- app.post('/test', async (req, res)=> {
-    try {
-       
-       let new_store = new Store ({
-          info :req.params.info ,
-       });
-       await new_store.save()
-       res.send('store added !')   
-    } catch (err) {
-       console.log(err);
-       
-    }
-    
-    
- })
+    const data = tab.split('||');
+  
+    let new_position = new Position ({
+        latitude :data[0],
+        longutide :data[1],
+        date :data[2],
+        time :data[3]
+        
+     });
+     new_position.save()
+        console.log(data);
+      return res.status(200).json({
+          success:"Vehicule save effactué avec succes"
+      });
+    });
 
 
 MONGODB_URL='mongodb+srv://admin:admin123@cluster0.rkyui.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
