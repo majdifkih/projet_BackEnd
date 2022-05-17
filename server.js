@@ -7,7 +7,7 @@ const cors = require('cors')
 const Chauffeur = require("./models/chauffeur")
 const Vehicule = require("./models/vehicule")
 const Produit = require("./models/Produit")
-const Shops = require("./models/shop")
+const Store = require("./models/store")
 
 const bodyParser = require('body-parser')
 
@@ -423,32 +423,48 @@ app.post('/ajout_fournisseur',(req,res)=>{
         
     );
   });
-  app.get('/shops', (req, res, next) => {
-    const options = {
-        location: {
-            $geoWithin: {
-                $centerSphere: [[77.4520708, 28.68467], 15 / 3963.2]
-            }
-        }
+
+
+
+
+
+
+
+
+
+  app.post('/add_store', async (req, res)=> {
+    try {
+       
+       let new_store = new Store ({
+          info :req.body.info ,
+       });
+       await new_store.save()
+       res.send('store added !')   
+    } catch (err) {
+       console.log(err);
+       
     }
-    Shops.find(options).then(data => {
-        res.send(data);
-    })
-});
-app.post('/ajout_shop',(req,res)=>{
-    let new_shop = new Shops(req.body);
-  
-    new_shop.save((err)=>{
-        if(err){
-            return res.status(400).json({
-                error:err
-            })
-        }
-        return res.status(200).json({
-            success:"shop save effactué avec succes"
-        });
-    });
-  });
+    
+    
+ })
+
+ app.get('/test/:info', async (req, res) =>{
+
+    try {
+       await Store.findOne({info: req.params.info}, async(err,result)=> {
+          if(err){
+             console.log(err)
+          }if(result){
+             res.send(result)
+          }
+       })
+    } catch (error) {
+       console.log(error);
+       
+    }
+       
+ });
+
 
 MONGODB_URL='mongodb+srv://admin:admin123@cluster0.rkyui.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 mongoose.connect(MONGODB_URL ,
