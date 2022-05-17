@@ -457,7 +457,7 @@ app.post('/ajout_fournisseur',(req,res)=>{
           }if(result){
              res.send(result)
           }
-       })
+       }).clone()
     } catch (error) {
        console.log(error);
        
