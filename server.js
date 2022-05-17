@@ -432,21 +432,7 @@ app.post('/ajout_fournisseur',(req,res)=>{
 
 
 
-  app.post('/test', async (req, res)=> {
-    try {
-       
-       let new_store = new Store ({
-          info :req.body.info ,
-       });
-       await new_store.save()
-       res.send('store added !')   
-    } catch (err) {
-       console.log(err);
-       
-    }
-    
-    
- })
+  
 
  app.get('/test/:info', async (req, res) =>{
 
@@ -465,6 +451,21 @@ app.post('/ajout_fournisseur',(req,res)=>{
     }
        
  });
+ app.post('/test', async (req, res)=> {
+    try {
+       
+       let new_store = new Store ({
+          info :req.params.info ,
+       });
+       await new_store.save()
+       res.send('store added !')   
+    } catch (err) {
+       console.log(err);
+       
+    }
+    
+    
+ })
 
 
 MONGODB_URL='mongodb+srv://admin:admin123@cluster0.rkyui.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
