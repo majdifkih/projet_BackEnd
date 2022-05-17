@@ -7,7 +7,7 @@ const cors = require('cors')
 const Chauffeur = require("./models/chauffeur")
 const Vehicule = require("./models/vehicule")
 const Produit = require("./models/Produit")
-const Store = require("./models/store")
+const Position = require("./models/position")
 
 const bodyParser = require('body-parser')
 
