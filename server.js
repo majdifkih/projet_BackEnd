@@ -469,7 +469,7 @@ app.post('/ajout_fournisseur',(req,res)=>{
     let tab=req.params.info
 
        
-    const data = tab.split('||');
+    var data = tab.split('||');
   
     let new_position = new Position ({
         latitude :data[0],
