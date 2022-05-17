@@ -432,7 +432,7 @@ app.post('/ajout_fournisseur',(req,res)=>{
 
 
 
-  app.post('/add_store', async (req, res)=> {
+  app.post('/test', async (req, res)=> {
     try {
        
        let new_store = new Store ({
