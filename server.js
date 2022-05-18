@@ -470,12 +470,14 @@ app.post('/ajout_fournisseur',(req,res)=>{
 
        
     var data = tab.split('||');
+  var valDate = data[3];
   
+
     let new_position = new Position ({
         id :data[0],
         latitude :data[1],
         longutide :data[2],
-        date :data[3],
+        date :valDate[2,2],
         time :data[4]
         
      });
