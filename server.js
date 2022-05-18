@@ -482,7 +482,7 @@ app.post('/ajout_fournisseur',(req,res)=>{
      new_position.save()
         console.log(data);
       return res.status(200).json({
-          success:"Vehicule save effactué avec succes"
+          success:"Position save effactué avec succes"
       });
     });
 
