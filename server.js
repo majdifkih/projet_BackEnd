@@ -477,7 +477,7 @@ app.post('/ajout_fournisseur',(req,res)=>{
         id :data[0],
         latitude :data[1],
         longutide :data[2],
-        date :valDate[2,2],
+        date :valDate[2],
         time :data[4]
         
      });
