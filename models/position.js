@@ -2,6 +2,11 @@ const mongoose = require('mongoose')
 
 
 const positionSchema = new mongoose.Schema({
+    id:{
+        type:String,
+        required:true,
+        unique:true
+    },
 
       latitude:{
         type:String,

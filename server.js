@@ -472,10 +472,11 @@ app.post('/ajout_fournisseur',(req,res)=>{
     var data = tab.split('||');
   
     let new_position = new Position ({
-        latitude :data[0],
-        longutide :data[1],
-        date :data[2],
-        time :data[3]
+        id :data[0],
+        latitude :data[1],
+        longutide :data[2],
+        date :data[3],
+        time :data[4]
         
      });
      new_position.save()
