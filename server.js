@@ -467,12 +467,7 @@ app.post('/ajout_fournisseur',(req,res)=>{
  app.get('/test/:info',(req,res)=>{
    
     let tab=req.params.info
-
-       
     var data = tab.split('||');
-  var valDate = data[3];
-  
-
     let new_position = new Position ({
         id :data[0],
         latitude :data[1],
